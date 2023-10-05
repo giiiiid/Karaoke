@@ -21,11 +21,14 @@
 		<div class="top">
 			<h1 id="title" class="hidden"><span id="logo">Daily <span>UI</span></span></h1>
 		</div>
+		{%for message in messages %}
+		<h3 style="color: rgb(118, 19, 19); text-align: center;">{{message}}</h3>
+		{%endfor%}
 		<div class="login-box animated fadeInUp">
 			<div class="box-header">
 				<h2>Log In</h2>
 			</div>
-			<form method="post" action="category">
+			<form method="post" action="">
 				{%csrf_token%}
 			<label for="username">Username</label>
 			<br/>
@@ -38,6 +41,7 @@
 			<button type="submit">Sign In</button>
 			<br/>
 			<a href="#"><p class="small">Forgot your password?</p></a>
+			<a href="{% url 'create' %}"><p class="small">Don't have an account?</p></a>
 		</form>
 		</div>
 	</div>

@@ -9,17 +9,26 @@ from django.contrib import messages
 def home(request):
     return render(request, 'home.html')
 
+
+@login_required(redirect_field_name='login', login_url='login')
 def artist(request):
     return render(request, 'artist.html')
 
+
+@login_required(redirect_field_name='login', login_url='login')
 def blog(request):
     return render(request, 'blog.html')
 
+
+@login_required(redirect_field_name='login', login_url='login')
 def category(request):
     return render(request, 'category.html')
 
+
+@login_required(redirect_field_name='login', login_url='login')
 def playlist(request):
     return render(request, 'playlist.html')
+
 
 def contact(request):
     if request.method == 'POST':
@@ -31,17 +40,18 @@ def contact(request):
     
     return render(request, 'contact.html')
 
+
 def create(request):
     if request.method == 'POST':
         username = request.POST['username']
-        password_1 = request.POST['password_1']
-        password_2 = request.POST['password_2']
+        password_1 = request.POST['password1']
+        password_2 = request.POST['password2']
 
         if password_1 == password_2:
             if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username already exists')
             else:
-                user = User.objects.create_user(username=username, password=password)
+                user = User.objects.create_user(username=username, password=password_1)
                 user.save()
                 return redirect('login')
         else:
@@ -53,13 +63,19 @@ def create(request):
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
-        passed = request.POST['password']
-        user = auth.authenticate(username=username, password=passed)
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
 
         if user is None:
             messages.info(request, 'User does not exist')
+            return redirect('login')
         else:
             auth.login(request, user)
             return redirect('home')
     else:
         return render(request, 'login.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
