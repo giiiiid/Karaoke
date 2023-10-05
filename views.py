@@ -24,12 +24,5 @@ def contact(request):
         subject = request.POST['subject']
         message = request.POST['message']
         send_mail(subject,message,email,[settings.EMAIL_HOST_USER])
-    # with mail.get_connection() as connection:
-    #     mail.EmailMessage(
-    #         subject,
-    #         message,
-    #         email,
-    #         [settings.EMAIL_HOST_USER],
-    #         connection=connection,
-    #     ).send()
+    
     return render(request, 'contact.html')
