@@ -53,13 +53,13 @@ def create(request):
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
-        password_1 = request.POST['password_1']
-        user = auth.authenticate(username=username, password=password_1)
+        passed = request.POST['password']
+        user = auth.authenticate(username=username, password=passed)
 
         if user is None:
             messages.info(request, 'User does not exist')
         else:
             auth.login(request, user)
             return redirect('home')
-            
-    return render(request, 'login.html')
+    else:
+        return render(request, 'login.html')
