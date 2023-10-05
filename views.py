@@ -3,7 +3,7 @@ from django.contrib.auth.models import User,auth
 from django.core.mail import send_mail, EmailMessage
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .forms import AuthenticationForms
+from .models import Song
 from django.contrib import messages
 # Create your views here.
 def home(request):
@@ -22,7 +22,8 @@ def blog(request):
 
 @login_required(redirect_field_name='login', login_url='login')
 def category(request):
-    return render(request, 'category.html')
+    songs = Song.objects.all()
+    return render(request, 'category.html', {'songs':songs})
 
 
 @login_required(redirect_field_name='login', login_url='login')

@@ -129,21 +129,22 @@
 	<section class="songs-section">
 		<div class="container">
 			<!-- song -->
+			{% for song in songs %}
 			<div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
-							<img src="{% static 'img/songs/1.jpg' %}" alt="">
+							<img src="{{song.cover_image.url}}" alt="">
 							<div class="song-info">
-								<h4>Jennifer Brown</h4>
-								<p>One Night in Ibiza</p>
+								<h4>{{song.artiste}}</h4>
+								<p>{{song.song_name}}</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="single_player_container">
 							<div class="single_player">
-								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="media/3.mp3"></div>
+								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="{{song.audio_file.url}}"></div>
 								<div class="jp-audio jp_container_1" role="application" aria-label="media player">
 									<div class="jp-gui jp-interface">
 
@@ -177,14 +178,15 @@
 					<div class="col-lg-2">
 						<div class="songs-links">
 							<a href=""><img src="{% static 'img/icons/p-1.png' %}" alt=""></a>
-							<a href=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
+							<a href="{{song.audio_file.url}}" download=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
 							<a href=""><img src="{% static 'img/icons/p-3.png' %}" alt=""></a>
 						</div>
 					</div>
 				</div>
 			</div>
+			{%endfor%}
 			<!-- song -->
-			<div class="song-item">
+			 <!-- <div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
@@ -200,18 +202,18 @@
 							<div class="single_player">
 								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_2" data-url="media/2.mp3"></div>
 								<div class="jp-audio jp_container_2" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
+									<div class="jp-gui jp-interface"> -->
 
 										<!-- Player Controls -->
-										<div class="player_controls_box">
+										<!-- <div class="player_controls_box">
 											<button class="jp-prev player_button" tabindex="0"></button>
 											<button class="jp-play player_button" tabindex="0"></button>
 											<button class="jp-next player_button" tabindex="0"></button>
 											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
+										</div> -->
 
 										<!-- Progress Bar -->
-										<div class="player_bars">
+										<!-- <div class="player_bars">
 											
 											<div class="jp-progress">
 												<div class="jp-seek-bar">
@@ -221,8 +223,8 @@
 												</div>
 											</div>
 											<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
-										</div>
-									</div>
+										</div> -->
+									<!-- </div>
 									<div class="jp-no-solution">
 										<span>Update Required</span>
 										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
@@ -230,8 +232,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-2">
+					</div> -->
+					<!-- <div class="col-lg-2">
 						<div class="songs-links">
 							<a href=""><img src="{% static 'img/icons/p-1.png' %}" alt=""></a>
 							<a href=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
@@ -239,9 +241,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- song -->
-			<div class="song-item">
+			<!-- <div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
@@ -257,18 +259,18 @@
 							<div class="single_player">
 								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_3" data-url="media/3.mp3"></div>
 								<div class="jp-audio jp_container_3" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
+									<div class="jp-gui jp-interface"> -->
 
 										<!-- Player Controls -->
-										<div class="player_controls_box">
+										<!-- <div class="player_controls_box">
 											<button class="jp-prev player_button" tabindex="0"></button>
 											<button class="jp-play player_button" tabindex="0"></button>
 											<button class="jp-next player_button" tabindex="0"></button>
 											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
+										</div> -->
 
 										<!-- Progress Bar -->
-										<div class="player_bars">
+										<!-- <div class="player_bars">
 											
 											<div class="jp-progress">
 												<div class="jp-seek-bar">
@@ -278,8 +280,8 @@
 												</div>
 											</div>
 											<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
-										</div>
-									</div>
+										</div> -->
+									<!-- </div>
 									<div class="jp-no-solution">
 										<span>Update Required</span>
 										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
@@ -287,8 +289,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-2">
+					</div> -->
+					<!-- <div class="col-lg-2">
 						<div class="songs-links">
 							<a href=""><img src="{% static 'img/icons/p-1.png' %}" alt=""></a>
 							<a href=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
@@ -296,9 +298,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- song -->
-			<div class="song-item">
+			<!-- <div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
@@ -314,18 +316,18 @@
 							<div class="single_player">
 								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_4" data-url="music-files/4.mp3"></div>
 								<div class="jp-audio jp_container_4" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
+									<div class="jp-gui jp-interface"> -->
 
 										<!-- Player Controls -->
-										<div class="player_controls_box">
+										<!-- <div class="player_controls_box">
 											<button class="jp-prev player_button" tabindex="0"></button>
 											<button class="jp-play player_button" tabindex="0"></button>
 											<button class="jp-next player_button" tabindex="0"></button>
 											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
+										</div> -->
 
 										<!-- Progress Bar -->
-										<div class="player_bars">
+										<!-- <div class="player_bars">
 											
 											<div class="jp-progress">
 												<div class="jp-seek-bar">
@@ -336,16 +338,16 @@
 											</div>
 											<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
 										</div>
-									</div>
-									<div class="jp-no-solution">
+									</div> -->
+									<!-- <div class="jp-no-solution">
 										<span>Update Required</span>
 										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-2">
+					</div> -->
+					<!-- <div class="col-lg-2">
 						<div class="songs-links">
 							<a href=""><img src="{% static 'img/icons/p-1.png' %}" alt=""></a>
 							<a href=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
@@ -353,9 +355,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- song -->
-			<div class="song-item">
+			<!-- <div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
@@ -371,18 +373,18 @@
 							<div class="single_player">
 								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_5" data-url="music-files/5.mp3"></div>
 								<div class="jp-audio jp_container_5" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
+									<div class="jp-gui jp-interface"> -->
 
 										<!-- Player Controls -->
-										<div class="player_controls_box">
+										<!-- <div class="player_controls_box">
 											<button class="jp-prev player_button" tabindex="0"></button>
 											<button class="jp-play player_button" tabindex="0"></button>
 											<button class="jp-next player_button" tabindex="0"></button>
 											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
+										</div> -->
 
 										<!-- Progress Bar -->
-										<div class="player_bars">
+										<!-- <div class="player_bars">
 											
 											<div class="jp-progress">
 												<div class="jp-seek-bar">
@@ -392,8 +394,8 @@
 												</div>
 											</div>
 											<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
-										</div>
-									</div>
+										</div> -->
+									<!-- </div>
 									<div class="jp-no-solution">
 										<span>Update Required</span>
 										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
@@ -401,8 +403,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-2">
+					</div> -->
+					<!-- <div class="col-lg-2">
 						<div class="songs-links">
 							<a href=""><img src="{% static 'img/icons/p-1.png' %}" alt=""></a>
 							<a href=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
@@ -410,9 +412,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- song -->
-			<div class="song-item">
+			<!-- <div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
@@ -428,18 +430,18 @@
 							<div class="single_player">
 								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_6" data-url="music-files/6.mp3"></div>
 								<div class="jp-audio jp_container_6" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
+									<div class="jp-gui jp-interface"> -->
 
 										<!-- Player Controls -->
-										<div class="player_controls_box">
+										<!-- <div class="player_controls_box">
 											<button class="jp-prev player_button" tabindex="0"></button>
 											<button class="jp-play player_button" tabindex="0"></button>
 											<button class="jp-next player_button" tabindex="0"></button>
 											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
+										</div> -->
 
 										<!-- Progress Bar -->
-										<div class="player_bars">
+										<!-- <div class="player_bars">
 											
 											<div class="jp-progress">
 												<div class="jp-seek-bar">
@@ -450,8 +452,8 @@
 											</div>
 											<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
 										</div>
-									</div>
-									<div class="jp-no-solution">
+									</div> -->
+									<!-- <div class="jp-no-solution">
 										<span>Update Required</span>
 										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
 									</div>
@@ -467,9 +469,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- song -->
-			<div class="song-item">
+			<!-- <div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
@@ -485,18 +487,18 @@
 							<div class="single_player">
 								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_7" data-url="music-files/7.mp3"></div>
 								<div class="jp-audio jp_container_7" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
+									<div class="jp-gui jp-interface"> -->
 
 										<!-- Player Controls -->
-										<div class="player_controls_box">
+										<!-- <div class="player_controls_box">
 											<button class="jp-prev player_button" tabindex="0"></button>
 											<button class="jp-play player_button" tabindex="0"></button>
 											<button class="jp-next player_button" tabindex="0"></button>
 											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
+										</div> -->
 
 										<!-- Progress Bar -->
-										<div class="player_bars">
+										<!-- <div class="player_bars">
 											
 											<div class="jp-progress">
 												<div class="jp-seek-bar">
@@ -524,9 +526,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- song -->
-			<div class="song-item">
+			<!-- <div class="song-item">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
@@ -542,18 +544,18 @@
 							<div class="single_player">
 								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url="music-files/8.mp3"></div>
 								<div class="jp-audio jp_container_8" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
+									<div class="jp-gui jp-interface"> -->
 
 										<!-- Player Controls -->
-										<div class="player_controls_box">
+										<!-- <div class="player_controls_box">
 											<button class="jp-prev player_button" tabindex="0"></button>
 											<button class="jp-play player_button" tabindex="0"></button>
 											<button class="jp-next player_button" tabindex="0"></button>
 											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
+										</div> -->
 
 										<!-- Progress Bar -->
-										<div class="player_bars">
+										<!-- <div class="player_bars">
 											
 											<div class="jp-progress">
 												<div class="jp-seek-bar">
@@ -564,16 +566,16 @@
 											</div>
 											<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
 										</div>
-									</div>
-									<div class="jp-no-solution">
+									</div> -->
+									<!-- <div class="jp-no-solution">
 										<span>Update Required</span>
 										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-2">
+					</div> -->
+					<!-- <div class="col-lg-2">
 						<div class="songs-links">
 							<a href=""><img src="{% static 'img/icons/p-1.png' %}" alt=""></a>
 							<a href=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
@@ -587,7 +589,7 @@
 				<a href="#">02.</a>
 				<a href="#">03.</a>
 				<a href="#">04.</a>
-			</div>
+			</div> -->
 		</div>
 	</section>
 	<!-- Songs section end -->
@@ -626,7 +628,7 @@
 									<li><a href="">Newsletter</a></li>
 									<li><a href="">Careers</a></li>
 									<li><a href="">Press</a></li>
-									<li><a href="">Contact</a></li>
+									<li><a href="{% url 'contact' %}">Contact</a></li>
 								</ul>
 							</div>
 						</div>
