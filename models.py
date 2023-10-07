@@ -18,8 +18,6 @@ class Artist(models.Model):
     def __str__(self):
         return self.name
 
-    class ArtistSong(models.Model):
-        my_own = models.FileField(upload_to='audios')
 
 
 class Song(models.Model):
