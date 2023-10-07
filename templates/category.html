@@ -63,13 +63,12 @@
 				<ul class="sub-menu">
 					<li><a href="{% url 'category' %}">Category</a></li>
 					<li><a href="{% url 'playlist' %}">Playlist</a></li>
-					<li><a href="{% url 'artist' %}">Artist</a></li>
 					<li><a href="{% url 'blog' %}">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="{% url 'contact' %}">Contact</a></li>
 				</ul>
 			</li>
 			<li><a href="{% url 'blog' %}">News</a></li>
-			<li><a href="contact.html">Contact</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>
 		</ul>
 	</header>
 	<!-- Header section end -->
@@ -89,36 +88,18 @@
 			</div>
 			<div class="category-items">
 				<div class="row">
+					{%for song in songs %}
 					<div class="col-md-4">
 						<div class="category-item">
-							<img src="{% static 'img/playlist/9.jpg' %}" alt="">
+							<img src="{{ song.cover_image.url }}" alt="">
 							<div class="ci-text">
-								<h4>Micke Smith</h4>
-								<p>Live from Madrid</p>
+								<h4>{{song.artiste}}</h4>
+								<p>{{song.song_name}}</p>
 							</div>
-							<a href="{% url 'artist' %}" class="ci-link"><i class="fa fa-play"></i></a>
+							<a href="{% url 'artist' song.id %}" class="ci-link"><i class="fa fa-play"></i></a>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="category-item">
-							<img src="{% static 'img/playlist/2.jpg' %}" alt="">
-							<div class="ci-text">
-								<h4>Micke Smith</h4>
-								<p>Live from Madrid</p>
-							</div>
-							<a href="{% url 'artist' %}" class="ci-link"><i class="fa fa-play"></i></a>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="category-item">
-							<img src="{% static 'img/playlist/7.jpg' %}" alt="">
-							<div class="ci-text">
-								<h4>Micke Smith</h4>
-								<p>Live from Madrid</p>
-							</div>
-							<a href="{% url 'artist' %}" class="ci-link"><i class="fa fa-play"></i></a>
-						</div>
-					</div>
+					{%endfor%}
 				</div>
 			</div>
 		</div>
@@ -134,7 +115,7 @@
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="song-info-box">
-							<img src="{{song.cover_image.url}}" alt="">
+							<a href="{% url 'artist' song.id %}"><img src="{{song.cover_image.url}}" alt=""></a>
 							<div class="song-info">
 								<h4>{{song.artiste}}</h4>
 								<p>{{song.song_name}}</p>
@@ -143,34 +124,16 @@
 					</div>
 					<div class="col-lg-6">
 						<div class="single_player_container">
-							<div class="single_player">
-								<div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="{{song.audio_file.url}}"></div>
-								<div class="jp-audio jp_container_1" role="application" aria-label="media player">
-									<div class="jp-gui jp-interface">
-
-										<!-- Player Controls -->
-										<div class="player_controls_box">
-											<button class="jp-prev player_button" tabindex="0"></button>
-											<button class="jp-play player_button" tabindex="0"></button>
-											<button class="jp-next player_button" tabindex="0"></button>
-											<button class="jp-stop player_button" tabindex="0"></button>
-										</div>
-										<!-- Progress Bar -->
-										<div class="player_bars">
-											<div class="jp-progress">
-												<div class="jp-seek-bar">
-													<div>
-														<div class="jp-play-bar"><div class="jp-current-time" role="timer" aria-label="time">0:00</div></div>
-													</div>
-												</div>
-											</div>
-											<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
-										</div>
-									</div>
-									<div class="jp-no-solution">
-										<span>Update Required</span>
-										To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
-									</div>
+							<div id="wavePlayer" class="clierfix">
+								<div id="audiowave" data-waveurl="{{song.audio_file.url}}"></div>
+								<div id="currentTime"></div>
+								<div id="clipTime"></div>
+								<!-- Player Controls -->
+								<div class="wavePlayer_controls">
+									<button class="jp-prev player_button" onclick="wavesurfer.skipBackward();"></button>
+									<button class="jp-play player_button" onclick="wavesurfer.playPause();"></button>
+									<button class="jp-next player_button" onclick="wavesurfer.skipForward();"></button>
+									<button class="jp-stop player_button" onclick="wavesurfer.stop();"></button>
 								</div>
 							</div>
 						</div>

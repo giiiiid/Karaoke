@@ -3,7 +3,7 @@ from django.contrib.auth.models import User,auth
 from django.core.mail import send_mail, EmailMessage
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .models import Song
+from .models import Song, Artist
 from django.contrib import messages
 # Create your views here.
 def home(request):
@@ -11,8 +11,10 @@ def home(request):
 
 
 @login_required(redirect_field_name='login', login_url='login')
-def artist(request):
-    return render(request, 'artist.html')
+def artist(request, id):
+    songs = Song.objects.get(id=id)
+    artiste = Artist.objects.get(id=id)
+    return render(request, 'artist.html', {'songs':songs})
 
 
 @login_required(redirect_field_name='login', login_url='login')

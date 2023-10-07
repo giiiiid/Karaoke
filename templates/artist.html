@@ -63,7 +63,6 @@
 				<ul class="sub-menu">
 					<li><a href="{% url 'category' %}">Category</a></li>
 					<li><a href="{% url 'playlist' %}">Playlist</a></li>
-					<li><a href="{% url 'artist' %}">Artist</a></li>
 					<li><a href="{% url 'blog' %}">Blog</a></li>
 					<li><a href="{% url 'contact' %}">Contact</a></li>
 				</ul>
@@ -79,7 +78,7 @@
 		<div class="player-box">
 			<div class="tarck-thumb-warp">
 				<div class="tarck-thumb">
-					<img src="{% static 'img/wave-thumb.jpg' %}" alt="">
+					<img src="{{songs.cover_image.url}}" alt="">
 					<button onclick="wavesurfer.playPause();" class="wp-play"></button>
 				</div>
 			</div>
@@ -87,8 +86,8 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="wave-player-info">
-							<h2>Michael Smith</h2>
-							<p>One Night in Ibiza</p>
+							<h2>{{songs.artiste}}</h2>
+							<p>{{songs.song_name}}</p>
 						</div>
 					</div>
 					<div class="col-lg-4">
@@ -100,7 +99,7 @@
 					</div>
 				</div>
 				<div id="wavePlayer" class="clierfix">
-					<div id="audiowave" data-waveurl="music-files/8.mp3"></div>
+					<div id="audiowave" data-waveurl="{{songs.audio_file.url}}"></div>
 					<div id="currentTime"></div>
 					<div id="clipTime"></div>
 					<!-- Player Controls -->
@@ -124,9 +123,8 @@
 					<div class="song-details-box">
 						<h3>Song Details</h3>
 						<ul>
-							<li><strong>Genre:</strong><span>electro, drum & base, minimal</span></li>
-							<li><strong>Tags:</strong><span>quitar, piano, music, electronic music, minimal, chill music, pop, cultural, live, popular</span></li>
-							<li><strong>Instruments:</strong><span>quitar, piano, drums, bass</span></li>
+							<li><strong>Genre:</strong><span>{{songs.genre}}</span></li>
+							<li><strong>Producer:</strong><span>{{songs.producer}}</span></li>
 						</ul>
 					</div>
 				</div>
