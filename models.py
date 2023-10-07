@@ -9,7 +9,7 @@ class Authentication(models.Model):
         return self.username
 
 class Artist(models.Model):
-    name = models.CharField(max_length=150, default=True)
+    name = models.CharField(max_length=150, default=False)
     description = models.TextField(max_length=10000)
     
     def save(self, *args, **kwargs):
