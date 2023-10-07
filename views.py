@@ -13,7 +13,7 @@ def home(request):
 @login_required(redirect_field_name='login', login_url='login')
 def artist(request, id):
     songs = Song.objects.get(id=id)
-    # artiste = Artist.objects.get(id=id)
+    artiste = Artist.objects.get(id=id)
     return render(request, 'artist.html', {'songs':songs, 'artiste':artiste})
 
 
