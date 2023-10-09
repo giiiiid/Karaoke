@@ -38,9 +38,14 @@ def fav(request):
     if request.method == 'POST':
         user = request.user
         fav_id = request.POST['fav_id']
-        favis = Favourite(user=user, fav_id=fav_id)
-        favis.save()
 
+        favis = Favourite.objects.filter(user=user)
+        for i in favis:
+            if fav_id == i.fav_id:
+                break
+        else:
+            favis = Favourite(user=user, fav_id=fav_id)
+            favis.save()
         favs = Favourite.objects.all()
         return redirect('fav')
 
