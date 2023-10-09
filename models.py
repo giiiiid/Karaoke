@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Authentication(models.Model):
     username = models.CharField(max_length=100)
@@ -19,7 +19,6 @@ class Artist(models.Model):
         return self.name
 
 
-
 class Song(models.Model):
     name = models.ForeignKey(Artist, on_delete=models.CASCADE, default=True)
     artiste = models.CharField(max_length=150)
@@ -33,3 +32,6 @@ class Song(models.Model):
         return self.artiste + '-' + self.song_name
 
 
+class Favourite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    fav_id = models.CharField(max_length=10000, default='')
