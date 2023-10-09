@@ -20,6 +20,7 @@ class Artist(models.Model):
 
 
 class Song(models.Model):
+    song_id = models.AutoField(primary_key=True)
     name = models.ForeignKey(Artist, on_delete=models.CASCADE, default=True)
     artiste = models.CharField(max_length=150)
     song_name = models.CharField(max_length=150)
@@ -33,5 +34,6 @@ class Song(models.Model):
 
 
 class Favourite(models.Model):
+    fav_song_id = models.AutoField(primary_key=True, default='False')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     fav_id = models.CharField(max_length=10000, default='')

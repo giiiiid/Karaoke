@@ -44,6 +44,7 @@ def fav(request):
         else:
             favis = Favourite(user=user, fav_id=fav_id)
             favis.save()
+            songs = Song.objects.get(id)
         return redirect('fav')
 
     else:
