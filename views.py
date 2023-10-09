@@ -33,6 +33,10 @@ def playlist(request):
     return render(request, 'playlist.html')
 
 
+@login_required(redirect_field_name='login', login_url='login')
+def fav(request):
+    return render(request, 'fav.html')
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST['name']

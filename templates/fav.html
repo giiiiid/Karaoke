@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section class="songs-section">
+    <div class="container">
+        <!-- song -->
+        <div class="song-item">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="song-info-box">
+                        <a href="#"><img src="#" alt=""></a>
+                        <div class="song-info">
+                            <h4>Artiste</h4>
+                            <p>Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single_player_container">
+                        <div id="wavePlayer" class="clierfix">
+                            <div id="audiowave" data-waveurl="#"></div>
+                            <div id="currentTime"></div>
+                            <div id="clipTime"></div>
+                            <!-- Player Controls -->
+                            <div class="wavePlayer_controls">
+                                <button class="jp-prev player_button" onclick="wavesurfer.skipBackward();"></button>
+                                <button class="jp-play player_button" onclick="wavesurfer.playPause();"></button>
+                                <button class="jp-next player_button" onclick="wavesurfer.skipForward();"></button>
+                                <button class="jp-stop player_button" onclick="wavesurfer.stop();"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="songs-links">
+                        <a href="#" download=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
+                        <a href=""><img src="{% static 'img/icons/p-3.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
