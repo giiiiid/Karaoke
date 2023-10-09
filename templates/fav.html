@@ -4,13 +4,14 @@
 <section class="songs-section">
     <div class="container">
         <!-- song -->
+        {% for fav in favs %}
         <div class="song-item">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="song-info-box">
-                        <a href="#"><img src="#" alt=""></a>
+                        <img src="{{fav}}" alt="">
                         <div class="song-info">
-                            <h4>Artiste</h4>
+                            <h4>{{fav.fav_id.}}</h4>
                             <p>Name</p>
                         </div>
                     </div>
@@ -39,6 +40,7 @@
                 </div>
             </div>
         </div>
+        {%endfor%}
     </div>
 </section>
 {% endblock %}

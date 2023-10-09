@@ -3,7 +3,7 @@ from django.contrib.auth.models import User,auth
 from django.core.mail import send_mail, EmailMessage
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .models import Song, Artist
+from .models import Song, Artist, Favourite
 from django.contrib import messages
 # Create your views here.
 def home(request):
@@ -33,9 +33,20 @@ def playlist(request):
     return render(request, 'playlist.html')
 
 
-@login_required(redirect_field_name='login', login_url='login')
+# @login_required(redirect_field_name='login', login_url='login')
 def fav(request):
-    return render(request, 'fav.html')
+    if request.method == 'POST':
+        user = request.user
+        fav_id = request.POST['fav_id']
+        favis = Favourite(user=user, fav_id=fav_id)
+        favis.save()
+
+        favs = Favourite.objects.all()
+        return redirect('fav')
+
+    else:
+        favs = Favourite.objects.all()
+    return render(request, 'fav.html', {'favs':favs})
 
 def contact(request):
     if request.method == 'POST':

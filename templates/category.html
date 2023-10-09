@@ -142,8 +142,8 @@
 					<div class="col-lg-2">
 						<div class="songs-links">
 							<div class="row">
-							<form method="post">{% csrf_token %}
-							<input type="hidden" name="fav_id" id="{{song.id}}">
+							<form method="post" action="{% url 'fav' %}">{% csrf_token %}
+							<input type="hidden" name="fav_id" value="{{song.id}}">
 							<button type="submit"><img src="{% static 'img/icons/p-1.png' %}" alt=""></button>
 							<a href="{{song.audio_file.url}}" download=""><img src="{% static 'img/icons/p-2.png' %}" alt=""></a>
 							<a href=""><img src="{% static 'img/icons/p-3.png' %}" alt=""></a>
