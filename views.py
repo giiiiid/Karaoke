@@ -44,11 +44,11 @@ def fav(request):
         else:
             favis = Favourite(user=user, fav_id=fav_id)
             favis.save()
-            songs = Song.objects.get(id)
         return redirect('fav')
 
     else:
         favs = Favourite.objects.all()
+    
     return render(request, 'fav.html', {'favs':favs})
 
 def contact(request):
