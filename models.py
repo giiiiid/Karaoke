@@ -23,7 +23,7 @@ class Artist(models.Model):
 
 class Song(models.Model):
     # song_id = models.AutoField(primary_key=True)
-    name = models.ForeignKey(Artist, on_delete=models.CASCADE, default=True)
+    # name = models.ForeignKey(Artist, on_delete=models.CASCADE, default=True)
     artiste = models.CharField(max_length=150)
     song_name = models.CharField(max_length=150)
     cover_image = models.ImageField(upload_to='cover_images')

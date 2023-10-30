@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giiid</title>
+    <link rel="stylesheet" href="{% static 'crud-style.css' %}">
+</head>
+<body>
+    <body>
+
+        <div id="app">
+          <h1>my Crud</h1>
+
+          {% for task in tasks %}
+          <table>
+            <!--tasks-->
+            <div style="float: right;">
+            <tr>
+              <ul>
+              <td style="font-family: Lato,sans-serif; font-size:20px;"><a href="{% url 'detail' task.activity %}"><li>{{task.activity}}</li></a></td>
+              <td style="font-family: Lato,sans-serif; font-size:20px;"><a href="{% url 'done' task.activity %}"><img src="{% static 'done.png' %}" width="37" height="37"></a></td>
+              <td style="font-family: Lato,sans-serif; font-size:20px;"><a href="{% url 'update' task.activity %}"><img src="{% static 'update.png' %}" width="37" height="37"></a></td>
+              <td style="font-family: Lato,sans-serif; font-size:20px; padding: 0 15px 2px 15px;"><a href="{% url 'delete' task.activity %}"><img src="{% static 'delete.png' %}" width="37" height="37"></a></td>   
+              </ul>
+            </tr>
+            </div>
+          </table><p></p>
+          {%endfor%}
+
+          <!--forms to create a new task-->
+          <form method="post" enctype="multipart/form-data">{%csrf_token%}
+          {{forms.as_p}}
+          <!-- Name
+          <input type="text" name="name" required><br><br>
+          Audio
+          <input type="file" name="audio" required accept="audio/*"><br><br>
+          Image
+          <input type="file" name="image" required accept="image/*"> -->
+          <button class='btn_add' type="submit">Add</button>
+          </form>
+          <p>Insert a new task</p>
+        </div>
+      </body>
+</body>
+</html>

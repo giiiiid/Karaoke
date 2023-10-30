@@ -3,6 +3,7 @@ from django.contrib.auth.models import User,auth
 from django.core.mail import send_mail, EmailMessage
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from .forms import AddSongForms
 from .models import Song, Artist, Favourite
 from django.contrib import messages
 # Create your views here.
@@ -100,3 +101,14 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+
+def add(request):
+    forms = AddSongForms()
+    if request.method == 'POST':
+        forms = AddSongForms(request.POST, request.FILES)
+        if forms.is_valid():
+            forms.save()
+            return redirect('home')
+    context = {'forms':forms}
+    return render(request, 'add.html', context)
