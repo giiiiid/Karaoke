@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .forms import AddSongForms
 from .models import Song, Artist, Favourite
+from .decorators import unauthorised_user, can_add_song
 from django.contrib import messages
 # Create your views here.
 def home(request):
@@ -82,6 +83,7 @@ def create(request):
     return render(request, 'create.html')
 
 
+@unauthorised_user
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -103,6 +105,7 @@ def logout(request):
     return redirect('login')
 
 
+@can_add_song(allowed_users=[])
 def add(request):
     forms = AddSongForms()
     if request.method == 'POST':
